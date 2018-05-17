@@ -1,6 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+
+import { propTypes, defaultProps } from '../props';
 
 const Container = styled.div`
   ${({
@@ -17,7 +18,7 @@ const Container = styled.div`
   align-items: center;
   position: relative;
   background: ${props => props.backgroundColor};
-  border: 4px solid ${props => props.borderColor};
+  border: ${props => props.borderSize}px solid ${props => props.borderColor};
   &:after, &:before {
     border: solid transparent;
     content: " ";
@@ -90,31 +91,7 @@ const PointingBox = props => (
   </Container>
 );
 
-PointingBox.propTypes = {
-  width: PropTypes.string,
-  size: PropTypes.number,
-  color: PropTypes.string,
-  borderRadius: PropTypes.string,
-  top: PropTypes.bool,
-  left: PropTypes.bool,
-  right: PropTypes.bool,
-  bottom: PropTypes.bool,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
-};
-
-PointingBox.defaultProps = {
-  color: 'white',
-  width: 'auto',
-  size: 20,
-  top: false,
-  borderRadius: '0',
-  left: false,
-  right: false,
-  bottom: false,
-  children: null,
-};
+PointingBox.propTypes = propTypes;
+PointingBox.defaultProps = defaultProps;
 
 export default PointingBox;

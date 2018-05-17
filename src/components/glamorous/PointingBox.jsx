@@ -1,6 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
+
+import { propTypes, defaultProps } from '../props';
 
 const Container = glamorous.div({
   display: 'flex',
@@ -34,6 +35,7 @@ const Container = glamorous.div({
   padding,
   color,
   borderRadius,
+  borderSize,
 }) => {
   let topStyle = null;
   let leftStyle = null;
@@ -57,7 +59,7 @@ const Container = glamorous.div({
     color,
     borderRadius,
     background: backgroundColor,
-    border: `4px solid ${borderColor}`,
+    border: `${borderSize}px solid ${borderColor}`,
     '&:after, &:before': {
       bottom: top ? '100%' : null,
       top: topStyle,
@@ -91,35 +93,7 @@ const PointingBox = props => (
   </Container>
 );
 
-PointingBox.propTypes = {
-  width: PropTypes.string,
-  size: PropTypes.number,
-  color: PropTypes.string,
-  borderRadius: PropTypes.string,
-  backgroundColor: PropTypes.string,
-  borderColor: PropTypes.string,
-  top: PropTypes.bool,
-  left: PropTypes.bool,
-  right: PropTypes.bool,
-  bottom: PropTypes.bool,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
-};
-
-PointingBox.defaultProps = {
-  color: 'white',
-  backgroundColor: 'red',
-  borderColor: 'green',
-  width: 'auto',
-  size: 20,
-  borderRadius: '0',
-  top: false,
-  left: false,
-  right: false,
-  bottom: false,
-  children: null,
-};
+PointingBox.propTypes = propTypes;
+PointingBox.defaultProps = defaultProps;
 
 export default PointingBox;
